@@ -175,3 +175,238 @@ int main() {
     cout << mapa[1][0] << mapa[1][1] << mapa[1][2] << '\n';
     return 0;
 }
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int balas_recogidas = 8;
+    int balas_finales;
+
+    // ESCRIBE TU CODIGO AQUI ABAJO:
+    // balas_finales = ...
+    balas_finales = (balas_recogidas % 2 == 0) ? balas_recogidas + 1 : balas_finales
+    
+
+    cout << "Bolas cargadas en el arma: " << balas_finales << '\n';
+    return 0;
+}
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int largo_trinchera = 10;
+    const char BLOQUE = '=';
+    
+    vector<char> mi_trinchera;
+
+    // ESCRIBE TU CODIGO AQUI ABAJO:
+    // Dale la orden a 'mi_trinchera' usando .assign() para que tenga el largo y el bloque correcto.
+    mi_trinchera.assign(largo_trinchera, BLOQUE);
+    
+    // Esto imprimira tu trinchera para comprobar si funciono
+    cout << "Mi trinchera se ve asi: \n";
+    for(int i = 0; i < largo_trinchera; i++) {
+        cout << mi_trinchera[i];
+    }
+    cout << '\n';
+
+    return 0;
+}
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class CampoDeFuerza {
+private:
+    int tamano;
+    vector<vector<char>> escudo;
+
+public:
+    // ESTE ES EL CONSTRUCTOR QUE DEBES COMPLETAR:
+    CampoDeFuerza(int radio_deseado) {
+        
+        // 1. Usa el operador ternario para asegurar que 'tamano' sea un numero PAR.
+        // (PISTA: Si radio_deseado % 2 != 0, entonces sumale 1)
+        tamano = (radio_deseado % 2 != 0) ? radio_deseado + 1 : radio_deseado;
+        
+        // 2. Usa .assign() para rellenar la matriz 'escudo'.
+        // Recuerda que es alto, vector<char>(ancho, simbolo)
+        escudo.assign(tamano, <vector<char>(tamano, '0'));
+        
+    }
+};
+
+int main() {
+    CampoDeFuerza miEscudo(5); // Le pasamos un 5 (impar), tu codigo deberia arreglarlo a 6.
+    cout << "Escudo construido en la memoria con exito!\n";
+    return 0;
+}
+
+
+#include <iostream>
+using namespace std;
+
+bool puedeEntrar(int edad, int tiene_vip) {
+    // ESCRIBE TU CÓDIGO AQUÍ:
+    // Retorna verdadero SOLO SI la edad es mayor o igual (>=) a 18 
+    // Y (&&) si tiene_vip es exactamente igual (==) a 1.
+    if (edad >= 18 && tiene_vip == 1) {
+    return true;
+    } else {
+        return false;
+    }
+    
+}
+
+int main() {
+    bool acceso = puedeEntrar(20, 1);
+    
+    if (acceso == true) {
+        cout << "Bienvenido al club.\n";
+    } else {
+        cout << "Acceso denegado.\n";
+    }
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+bool tiroValido(int x, int limite_derecho) {
+    // ESCRIBE TU CÓDIGO AQUÍ:
+    // Retorna verdadero si x es mayor o igual a 0 Y menor que limite_derecho
+    return (x >= 0 && x < limite_derecho);
+}
+
+int main() {
+    int impacto = 5;
+    if (tiroValido(impacto, 10)) {
+        cout << "¡Tiro en el blanco!\n";
+    } else {
+        cout << "Tiro fallado, fuera de los limites.\n";
+    }
+    return 0;
+}
+
+
+#include <iostream>
+using namespace std;
+
+bool dentroDelTablero(int x, int y) {
+    int tamano_tablero = 8;
+    
+    // ESCRIBE TU CÓDIGO AQUÍ:
+    // Retorna verdadero SI:
+    // 1. x es mayor o igual a 0 Y menor que tamano_tablero
+    // 2. Y y es mayor o igual a 0 Y menor que tamano_tablero
+    return (x >= 0 && x < tamano_tablero && y >= 0 && y < tamano_tablero);
+}
+
+int main() {
+    int caballo_x = 3;
+    int caballo_y = 8; // ¡Oops! Esto está fuera del tablero
+    
+    if (dentroDelTablero(caballo_x, caballo_y)) {
+        cout << "Movimiento legal.\n";
+    } else {
+        cout << "¡El caballo se cayo de la mesa!\n";
+    }
+    return 0;
+}
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    char celda_actual = 'V'; // Imagina que el robot pisó una ventana
+    char COLOR_ROJO = 'R';
+    char VENTANA = 'V';
+
+    // ESCRIBE TU CÓDIGO AQUÍ:
+    // SI celda_actual es DISTINTA (!=) a VENTANA, entonces
+    // cambia el valor de celda_actual a COLOR_ROJO.
+    if (celda_actual != VENTANA) {
+        celda_actual = COLOR_ROJO;
+    }
+    cout << "El estado de la celda es: " << celda_actual << '\n';
+    // Debería imprimir 'V', porque la protegiste y no la pintaste.
+    return 0;
+}
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    // Un caminito de 5 pasos, todos vacíos
+    vector<char> bosque = {' ', ' ', ' ', ' ', ' '};
+    int mi_posicion = 2; // Estoy parado en el medio
+
+    // PASO 1: DEJAR LA MIGAJA
+    // Cambia el valor de bosque en 'mi_posicion' por un asterisco '*'
+   bosque[mi_posicion] = '*';
+    
+    cout << "Deje la migaja: [" << bosque[mi_posicion] << "]\n";
+
+    // PASO 2: EL CALLEJÓN SIN SALIDA (BACKTRACKING)
+    // Te das cuenta de que no hay salida. 
+    // Vuelve a cambiar bosque en 'mi_posicion' por un espacio vacío ' '
+   bosque[mi_posicion] = ' ';
+    
+    
+    cout << "Recogi la migaja: [" << bosque[mi_posicion] << "]\n";
+
+    return 0;
+}
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    char INICIO = 'E';
+    char RUTA = '*';
+    char CAMINO = ' ';
+    
+    // Una mini cuadricula de 3x3
+    vector<vector<char>> cuadricula = {
+        {'#', '#', '#'},
+        {'#', 'E', '#'}, // El inicio esta en x=1, y=1
+        {'#', '#', '#'}
+    };
+    
+    int x = 1;
+    int y = 1;
+
+    // ESCRIBE TU CODIGO AQUI:
+    
+    // 1. INTENTO DE AVANCE: 
+    // SI cuadricula[y][x] NO ES IGUAL (!=) a INICIO...
+    // ...entonces la cuadricula[y][x] recibe la RUTA;
+    if (cuadricula[y][x] != INICIO) {
+        cuadricula[y][x] = RUTA;
+    }
+    
+    cout << "Al avanzar, la celda (1,1) tiene: " << cuadricula[y][x] << '\n';
+
+    // 2. RETROCESO (BACKTRACKING):
+    // SI cuadricula[y][x] NO ES IGUAL (!=) a INICIO...
+    // ...entonces la cuadricula[y][x] recibe el CAMINO;
+    if (cuadricula[y][x] != INICIO) {
+        cuadricula[y][x] = CAMINO;
+    }
+    
+    cout << "Al retroceder, la celda (1,1) tiene: " << cuadricula[y][x] << '\n';
+
+    return 0;
+}
